@@ -1,4 +1,5 @@
 var Server = require('node_erlastic').server,
+    React = require("react"),
     ReactDOMServer = require("react-dom/server"),
 	Bert = require('node_erlastic/bert'),
     styleCollector = require("./style-collector"),
