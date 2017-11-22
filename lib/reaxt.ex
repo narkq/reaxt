@@ -6,6 +6,9 @@ defmodule ReaxtError do
   def exception({:render_error,error,stack,js_render}) do
     %ReaxtError{message: "JS Exception : #{error}", js_render: js_render, js_stack: (stack && parse_stack(stack))}
   end
+  def exception(unknown) do
+    %ReaxtError{message: "Unknown JS Exception : #{inspect unknown}"}
+  end
   defp parse_stack(stack) do
     Regex.scan(~r/at (.*) \((.*):([0-9]*):[0-9]*\)/,stack)
     |> Enum.map(fn [_,function,url,line]->
